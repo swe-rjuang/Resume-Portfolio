@@ -66,8 +66,7 @@ Supporting a team of 2-6 software engineers in Features team.
 _Interactive game-based rehabilitation using the Microsoft Kinect_, Virtual Reality (VR), 2012 IEEE
 
 ## Education
-B.S. Computer Science
-California State University, Long Beach 
+B.S. Computer Science, California State University, Long Beach 
 
 ## Production Credits
 - Zwift (Features, gameplay, UI)
