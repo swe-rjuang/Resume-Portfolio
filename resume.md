@@ -69,11 +69,12 @@ _Interactive game-based rehabilitation using the Microsoft Kinect_, Virtual Real
 B.S. Computer Science, California State University, Long Beach 
 
 ## Production Credits
-- Zwift (Features, gameplay, UI)
-- TRON: Evolution (AI)
-- Fat Princess: Fistful of Cake (AI, framework, tool)
-- Order Up! (Gameplay)
-- flOw (AI, gameplay, tool)
-- JumpStart World (Gameplay)
+- [Zwift](https://github.com/swe-rjuang/Docs/blob/main/porfolio.md#zwift-windows-macos-ios-apple-tv-android) (Features, gameplay, UI)
+- [TRON: Evolution](https://github.com/swe-rjuang/Docs/blob/main/porfolio.md#tron-evolution-psp) (AI)
+- [Fat Princess: Fistful of Cake](https://github.com/swe-rjuang/Docs/blob/main/porfolio.md#oder-up-wii) (Gameplay)
+- [Order Up!](https://github.com/swe-rjuang/Docs/blob/main/porfolio.md#fat-princess-fistful-of-cake-psp) (AI, framework, tool)
+- [flOw](https://github.com/swe-rjuang/Docs/blob/main/porfolio.md#flow-psp) (AI, gameplay, tool)
+<!--
+- [JumpStart World](https://github.com/swe-rjuang/Docs/blob/main/porfolio.md#jumpstart-world-pc-mac) (Gameplay)
 - Scan Command: Jurassic Park (UI)
-
+-->
