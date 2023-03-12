@@ -1,8 +1,5 @@
 # Rick Juang
-
-- rickjswe@gmail.com
-- https://linkedin.com/in/rjuang
-- https://github.com/swe-rjuang
+rickjswe@gmail.com | [linkedin.com/in/rjuang](https://linkedin.com/in/rjuang) | [github.com/swe-rjuang](https://github.com/swe-rjuang)
 
 ## Work Experience
 
