@@ -1,4 +1,4 @@
-# Porfolio
+# Portfolio
 
 ## Zwift (Windows, MacOS, iOS, Apple TV, Android)
 ###### Contribution: various game modes, group events, game flow refactor, video texture, UI revamp
