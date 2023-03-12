@@ -12,7 +12,7 @@ rickjswe@gmail.com | [linkedin.com/in/rjuang](https://linkedin.com/in/rjuang) | 
 - Designated code owner and reviewer of multiple engine components.
 
 ##### Associate Engineering Manager	08/2021 - 10/2022
-Supporting a team of 2-6 software engineers in Features team.
+###### Supporting a team of 2-6 software engineers in Features team.
 - Evaluated team health and capabilities and identified resource gaps.
 - Mentored direct reports and provided career support.
 - Evaluated staffing needs for the team.
