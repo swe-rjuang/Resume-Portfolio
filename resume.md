@@ -8,7 +8,7 @@ rickjswe@gmail.com | [linkedin.com/in/rjuang](https://linkedin.com/in/rjuang) | 
 
 #### Gameplay Programming
 - Component-based framework in C++ for engine-agonistic gameplay logic.
-- Input handling, player mechanics and camera movement.
+- Input handling, player mechanics and cameras.
 - Event system for campaigns and missions.
 
 #### NPC/Bot AI Programming
