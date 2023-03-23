@@ -2,6 +2,32 @@
 ### Software Engineer
 rickjswe@gmail.com | [linkedin.com/in/rjuang](https://linkedin.com/in/rjuang) | [github.com/swe-rjuang](https://github.com/swe-rjuang)
 
+## Technical Skills
+- C++, C, C#, Java, JavaScript, Git, Perforce, Subversion, Visual Studio, Android Studio, Xcode, Unity 
+- Trello, Jira, Sentry, Optimizely, GIMP, Blender, Miro, Figma
+
+#### Gameplay Programming
+- Component-based framework in C++ for engine-agonistic gameplay logic.
+- Input handling, player mechanics and camera movement.
+- Event system for campaigns and missions.
+
+#### NPC/Bot AI Programming
+- Utility system for multi-objective bots.
+- Rule reflex agents with steering and flocking behaviors.
+- Model reflex agentds for vehicle racing.
+- Pathfinding and optimization.
+
+#### Physics Programming
+- Verlet integration for gravity and stable rebound.
+
+#### UI Programming
+- WPF based home screen elements to archieve responsive layout.
+- ECMAScript based menu.
+
+#### Graphics Programming
+- Integrated Bink to in-house engine to render video on texture (Zwift)
+- 2D particle system with fake motion blur.
+
 ## Work Experience
 
 #### Zwift, Inc.
@@ -47,18 +73,7 @@ rickjswe@gmail.com | [linkedin.com/in/rjuang](https://linkedin.com/in/rjuang) | 
 - Optimized and extended existing pathfinding and steering systems.
 - Created internal tools for bot AI development and automated testing.
 
-## Technical Skills
-- C++, C, C#, Java, JavaScript
-- Git, Perforce, Subversion
-- Visual Studio, Android Studio, Xcode, Unity 
 
-## Other Skills
-- Kanban and Scrum development process and tools (Trello, Jira)
-- Runtime Error Tracking (Sentry)
-- Static program analysis 
-- Familiar with GIMP, Photoshop, 3ds Max, Blender 
-- Design collaboration tools  (Miro, Figma)
-- CJK languages localization. 
 
 ## Publication
 _Interactive game-based rehabilitation using the Microsoft Kinect_, Virtual Reality (VR), 2012 IEEE
