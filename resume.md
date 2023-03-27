@@ -35,6 +35,7 @@ rickjswe@gmail.com | [linkedin.com/in/rjuang](https://linkedin.com/in/rjuang) | 
 ###### Generalist / gameplay programmer in UI and Gameplay teams.
 - Modernized engine’s UI with MVVM-based GUI system.
 - R&D for new gameplay feature MVP.
+- Managed technical debt in maintenance and stability.
 - Investigated and resolved high impact/severity defects..
 - Designated code owner and reviewer of multiple engine components.
 
