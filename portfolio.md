@@ -1,7 +1,7 @@
 # Portfolio
 
 ## Cold Iron Studios
-###### Contribution: plugins integration, data scraping and visualization, test automation frontend
+###### Contribution: narrative, plugins integration, data scraping and visualization, test automation frontend
 ![afe](https://github.com/swe-rjuang/Resume-Portfolio/assets/84008913/aee5d2e9-018b-4821-875d-1d57fcec2990)
 
 ## Zwift (Windows, MacOS, iOS, Apple TV, Android)
