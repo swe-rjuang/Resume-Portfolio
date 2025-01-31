@@ -26,7 +26,7 @@
 ![OrderUpWii](https://user-images.githubusercontent.com/84008913/224517575-3b7001e5-8560-4476-81b5-0e48cce0b494.png)
 
 ## flOw (2008, PSP)
-###### Contribution: Model-based reflex AI, some Physics
+###### Contribution: Model-based reflex AI, steering and some physics
 ![FlowPSP](https://user-images.githubusercontent.com/84008913/224517580-8aaedc29-5bfe-4906-8350-19bfba21ed7a.png)
 
 <!--
