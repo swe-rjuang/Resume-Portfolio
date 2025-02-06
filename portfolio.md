@@ -8,7 +8,7 @@
 ###### Contribution: various game modes, group events, game flow refactor, video texture, UI revamp
 <!--![Zwift_BoostMode_Jumbotron](https://user-images.githubusercontent.com/84008913/224517585-d6218205-71c6-463d-9bc7-2be86d5db534.png)-->
 
-| ![image](https://github.com/swe-rjuang/Resume-Portfolio/assets/84008913/63231ad0-b899-4758-8741-93873a4ec246) | ![Zwift3](https://github.com/swe-rjuang/Resume-Portfolio/assets/84008913/476a2445-b2a8-4f7a-be44-32d91d5f56e5) |
+| ![Zwift3](https://github.com/swe-rjuang/Resume-Portfolio/assets/84008913/476a2445-b2a8-4f7a-be44-32d91d5f56e5) | ![Home-1024x576](https://github.com/user-attachments/assets/e1707ab4-51b8-48db-a290-0d61354dc363) |
 | --- | --- |
 
 ## TRON: Evolution (2010, PSP)
