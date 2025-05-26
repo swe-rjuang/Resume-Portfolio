@@ -1,8 +1,9 @@
 # Portfolio
 
-## Cold Iron Studios
+## Aliens: Fireteam Elite
 ###### Contribution: narrative, plugins integration, data scraping and visualization, test automation frontend
-![afe](https://github.com/swe-rjuang/Resume-Portfolio/assets/84008913/aee5d2e9-018b-4821-875d-1d57fcec2990)
+| ![AliensFireteam-Elite_Rescue](https://github.com/user-attachments/assets/ee2cbd74-fc05-4a3c-ac9d-302379374cfd) | ![AliensFireteam-Elite_Contact](https://github.com/user-attachments/assets/3af69658-7177-48e2-8c69-433b74466e3f) |
+| --- | --- |
 
 ## Zwift (Windows, MacOS, iOS, Apple TV, Android)
 ###### Contribution: various game modes, group events, game flow refactor, video texture, UI revamp
@@ -10,6 +11,8 @@
 
 | ![Zwift3](https://github.com/swe-rjuang/Resume-Portfolio/assets/84008913/476a2445-b2a8-4f7a-be44-32d91d5f56e5) | ![Home-1024x576](https://github.com/user-attachments/assets/e1707ab4-51b8-48db-a290-0d61354dc363) |
 | --- | --- |
+| ![vlcsnap-2019-12-14-23h12m25s353-1](https://github.com/user-attachments/assets/c3063bbe-5a1d-4a1d-84ee-6cf0c28ac55e) | ![zwift_futureworks_blog_boost_5-1](https://github.com/user-attachments/assets/00a55aa9-e230-4968-98c4-236806b98667) |
+
 
 ## TRON: Evolution (2010, PSP)
 ###### Contribution: Utility based AI framework, pathfinding, vehicle control
