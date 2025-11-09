@@ -149,21 +149,43 @@
                     </div>
                     <!-- END Key Contributions Section -->
                     
+                    <!-- NEW: Tech Stack Tags Container -->
                     <div class="mt-8">
-                        <span class="bg-gray-700 text-sm font-medium py-1 px-3 rounded-full inline-block relative group">
-                            C++ & Unreal Engine
-                            <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 p-2 text-xs text-white bg-gray-800 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity w-max shadow-lg">
-                                Core tech stack used across all projects.
-                            </span>
-                        </span>
+                        <h3 class="text-2xl font-semibold mb-3 text-[#58a6ff]">Tech Stack</h3>
+                        <div id="tech-stack-container" class="flex flex-wrap gap-2">
+                            <!-- Dynamic tags injected here -->
+                        </div>
                     </div>
+                    <!-- END NEW: Tech Stack Tags Container -->
                 </div>
             </div>
         </main>
     </div>
 
     <script>
-        // --- 1. MOCK DATA DEFINITION (detail_image_urls is now an array) ---
+        // --- 1. MOCK DATA DEFINITION ---
+        
+        // Define styles for consistent tag colors
+        const TAG_STYLES = {
+            'C++': 'bg-blue-600 text-white',
+            'Unreal Engine 5': 'bg-green-600 text-white',
+            'Blueprint': 'bg-blue-600 text-white',
+            'Networking': 'bg-yellow-500 text-gray-900',
+            'AI': 'bg-red-600 text-white',
+            'Python': 'bg-blue-400 text-white',
+            'C#': 'bg-purple-600 text-white',
+            'Unity 3D': 'bg-indigo-600 text-white',
+            'UI': 'bg-purple-600 text-white',
+            'UI/UX': 'bg-purple-600 text-white',
+            'Build Pipeline': 'bg-teal-600 text-white',
+            'Shaders': 'bg-orange-600 text-white',
+            'Custom Engine': 'bg-gray-800 text-white',
+            'Grafana': 'bg-orange-600 text-white',
+            'TeamCity': 'bg-green-400 text-white',
+            'Xbox': 'bg-green-800 text-white',
+            'PlayStation': 'bg-blue-900 text-white',
+        };
+
         const projects = [
             {
                 id: 'P2025-SOS',
@@ -180,8 +202,9 @@
                     "Object pooling system to eliminate allocation spikes and achieving frame stability during object spawning",
                     "Integration of the full menu system, enabling the delivery of core features such as pause, settings, save/load.",
                 ],
+                tech_stack: ['C++', 'Unreal Engine 5', 'Blueprint', 'UI'],
                 video_embed_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=1' // Rickroll (Good placeholder!)
-            },    
+            },
             {
                 id: 'P2023-AFE',
                 title: 'Aliens: Fireteam Elite',
@@ -197,6 +220,7 @@
                     "Integrating and backporting narrative plugins across engine versions, improving cross-functional workflows and reducing design iteration time",
                     "Built analytics for nightly builds and test runs, boosting build health visibility 4× and reducing Mean Time To Detection (MTTD) by 85%",
                 ],
+                tech_stack: ['C++', 'Unreal Engine 5', 'Plugin', 'Build Pipeline', 'C#', 'Python', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation'],
                 video_embed_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=1' // Rickroll (Good placeholder!)
             },
             {
@@ -214,6 +238,7 @@
                     "Integrated a custom pathfinding solution optimized for dynamic cover generation.",
                     "Led cross-disciplinary meetings between design and engineering on combat tuning.",
                 ],
+                tech_stack: ['C++', 'Custom Engine', 'Networking', 'AI', 'Shaders'],
                 video_embed_url: 'https://www.youtube.com/embed/9bZkp7q19f0?autoplay=0&controls=1&mute=1' // Generic Game Trailer
             },
             {
@@ -229,6 +254,7 @@
                     "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
                     "Reduced UI load times by 40% through aggressive caching and optimization.",
                 ],
+                tech_stack: ['C++', 'UI/UX', 'Unreal Engine 5'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
             {
@@ -238,12 +264,13 @@
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
                 ],
-                description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
+                description: "Ported the original Fat Princess game to the PSP, optimizing core engine logic for memory and CPU constraints of the handheld console. This required significant C++ refactoring and low-level graphics optimization.",
                 contributions: [
-                    "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
-                    "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
-                    "Reduced UI load times by 40% through aggressive caching and optimization.",
+                    "Achieved a stable framerate on PSP hardware through extensive memory management.",
+                    "Rewrote the collision detection system for improved performance.",
+                    "Managed cross-platform compatibility between PS3 and PSP versions.",
                 ],
+                tech_stack: ['C++', 'Custom Engine', 'C#', 'UI/UX'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
             {
@@ -253,12 +280,13 @@
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
                 ],
-                description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
+                description: "A simple, abstract game that required custom physics implementation and dynamic UI scaling. This project focused heavily on efficient rendering pipelines for stylized 2D elements.",
                 contributions: [
-                    "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
-                    "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
-                    "Reduced UI load times by 40% through aggressive caching and optimization.",
+                    "Developed a custom particle system optimized for PSP hardware.",
+                    "Implemented the core growth and consumption mechanics.",
+                    "Managed submission process for handheld console release.",
                 ],
+                tech_stack: ['C++', 'Custom Engine', 'Shaders'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
             {
@@ -268,12 +296,13 @@
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
                 ],
-                description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
+                description: "A collection of personal projects, academic research, and tech demos focusing on advanced topics like Machine Learning for AI pathfinding and complex volumetric rendering experiments.",
                 contributions: [
-                    "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
-                    "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
-                    "Reduced UI load times by 40% through aggressive caching and optimization.",
+                    "Research paper on leveraging neural networks for non-player character behavior.",
+                    "Implemented a fluid simulation using compute shaders.",
+                    "Developed a robust test framework for custom game physics engines.",
                 ],
+                tech_stack: ['Python', 'C++', 'Shaders', 'AI'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
         ];
@@ -290,8 +319,8 @@
         const scrollLeftBtn = document.getElementById('scroll-left-btn');
         const scrollRightBtn = document.getElementById('scroll-right-btn');
         
-        // NEW REFERENCE for image gallery
         const imageGallery = document.getElementById('image-gallery'); 
+        const techStackContainer = document.getElementById('tech-stack-container'); // NEW REFERENCE
 
         let activeProject = null;
         
@@ -363,6 +392,18 @@
             `;
             videoContainer.innerHTML = videoIframe;
 
+            // --- Update Tech Stack Tags (NEW LOGIC) ---
+            techStackContainer.innerHTML = ''; // Clear previous tags
+            project.tech_stack.forEach(tag => {
+                const styleClass = TAG_STYLES[tag] || 'bg-gray-700 text-white'; // Default style
+                const span = document.createElement('span');
+                // The structure for the tag
+                span.className = `text-sm font-medium py-1 px-3 rounded-full shadow-md ${styleClass}`;
+                span.textContent = tag;
+                techStackContainer.appendChild(span);
+            });
+
+
             // --- Update Active State (Styling for Thumbnail List) ---
             if (activeProject) {
                 document.getElementById(`thumb-${activeProject}`).classList.remove('active');
@@ -421,10 +462,10 @@
 
         scrollWrapper.addEventListener('mouseleave', () => {
             if (isDown) { // Only reset if drag was active
-                 isDown = false;
-                 scrollWrapper.classList.remove('cursor-grabbing');
-                 scrollWrapper.style.cursor = 'grab';
-                 scrollWrapper.style.userSelect = 'auto';
+                isDown = false;
+                scrollWrapper.classList.remove('cursor-grabbing');
+                scrollWrapper.style.cursor = 'grab';
+                scrollWrapper.style.userSelect = 'auto';
             }
         });
 
@@ -468,6 +509,8 @@
                 
                 const img = document.createElement('img');
                 img.src = project.thumbnail_url;
+                // Add an error fallback for placeholder images
+                img.onerror = function() { this.src = 'https://placehold.co/150x90/1f242d/c9d1d9?text=Project'; };
                 img.alt = `${project.title} Thumbnail`;
                 img.className = 'w-full h-full object-cover rounded-lg'; 
                 
