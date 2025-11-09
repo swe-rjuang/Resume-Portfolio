@@ -39,7 +39,6 @@
         .project-thumbnail {
             transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
             cursor: pointer;
-            /* Allow the scaled active border/shadow to show outside the original bounds */
         }
         .project-thumbnail.active {
             border-color: #58a6ff;
@@ -58,6 +57,18 @@
         /* Ensure scroll wrapper allows space for enlarged thumbnails */
         #scroll-wrapper {
             overflow-y: visible !important;
+        }
+        
+        /* Custom scrollbar for the image gallery row */
+        #image-gallery::-webkit-scrollbar {
+            height: 6px;
+        }
+        #image-gallery::-webkit-scrollbar-thumb {
+            background-color: #30363d;
+            border-radius: 3px;
+        }
+        #image-gallery::-webkit-scrollbar-track {
+            background-color: transparent;
         }
     </style>
 </head>
@@ -84,12 +95,10 @@
             </div>
 
             <!-- Scroll Buttons (ABSOLUTELY POSITIONED) -->
-            <!-- FIX: Removed vertical centering classes (top-[50%] -translate-y-1/2) and used a fixed top-[40px] offset to position the buttons below the H2 heading and center them visually on the thumbnails. -->
             <button id="scroll-left-btn" class="scroll-btn absolute left-0 top-[52px] h-36 sm:h-36 py-2 px-2 rounded-r-lg opacity-0 invisible group-hover:opacity-100 transition-opacity duration-300 z-10 bg-gradient-to-r from-[#161b22] via-[#161b22] to-transparent text-[#58a6ff] focus:outline-none" aria-label="Scroll left">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
             
-            <!-- FIX: Removed vertical centering classes (top-[50%] -translate-y-1/2) and used a fixed top-[40px] offset to position the buttons below the H2 heading and center them visually on the thumbnails. -->
             <button id="scroll-right-btn" class="scroll-btn absolute right-0 top-[52px] h-36 sm:h-36 py-2 px-2 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 bg-gradient-to-l from-[#161b22] via-[#161b22] to-transparent text-[#58a6ff] focus:outline-none" aria-label="Scroll right">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
             </button>
@@ -103,11 +112,16 @@
                 <!-- Media Column (Image and Video) -->
                 <div>
                     <!-- Main Image Area -->
-                    <div class="mb-6">
-                        <!-- Initial placeholder text remains for an unselected project state -->
+                    <div class="mb-4">
                         <img id="detail-image" class="w-full h-auto rounded-lg shadow-xl border border-gray-600 object-cover aspect-video"
                                  src="https://placehold.co/800x450/1f242d/c9d1d9?text=Select+a+Project" alt="Project Main Visual">
                     </div>
+
+                    <!-- NEW: Image Gallery/Carousel -->
+                    <div id="image-gallery" class="flex space-x-3 overflow-x-auto pb-4">
+                        <!-- Image thumbnails injected here -->
+                    </div>
+                    <!-- END NEW: Image Gallery/Carousel -->
 
                     <!-- Embedded Video Area -->
                     <div class="aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-xl" id="video-container">
@@ -126,16 +140,15 @@
                         This single-file HTML structure gives you complete control over presentation and interactivity.
                     </p>
 
-                    <!-- NEW Key Contributions Section -->
+                    <!-- Key Contributions Section -->
                     <div class="mt-8">
-                        <h3 class="text-xl font-semibold mb-3 text-gray-200">Key Contributions</h3>
+                        <h3 class="text-2xl font-semibold mb-3 text-[#58a6ff]">Key Contributions</h3>
                         <ul id="contributions-list" class="list-disc pl-5 space-y-2 text-gray-400">
                             <!-- List items will be injected here by JavaScript -->
                         </ul>
                     </div>
-                    <!-- END NEW Key Contributions Section -->
+                    <!-- END Key Contributions Section -->
                     
-                    <!-- Example of a simple hover-over tooltip -->
                     <div class="mt-8">
                         <span class="bg-gray-700 text-sm font-medium py-1 px-3 rounded-full inline-block relative group">
                             C++ & Unreal Engine
@@ -150,26 +163,35 @@
     </div>
 
     <script>
-        // --- 1. MOCK DATA DEFINITION (NOW USING RELATIVE PATHS) ---
+        // --- 1. MOCK DATA DEFINITION (detail_image_urls is now an array) ---
         const projects = [
             {
                 id: 'P2025',
                 title: 'Stuck on Set',
                 thumbnail_url: 'thumb_sos.jpg',
-                detail_image_url: 'https://placehold.co/800x450/4A5568/ffffff?text=Galaxy+System+View',
-                description: "A C++ and Unreal Engine system utilizing noise functions and recursive algorithms to generate vast, explorable space sectors at runtime. Focused heavily on optimizing Level-of-Detail (LOD) and memory footprint for seamless console and PC performance. This system dramatically reduced content creation time for designers.",
+                detail_image_urls: [
+                    'https://placehold.co/800x450/4A5568/ffffff?text=Tech+System+Diagram',
+                    'https://placehold.co/120x90/4A5568/ffffff?text=Scene+View',
+                    'https://placehold.co/120x90/4A5568/ffffff?text=Debug+Overlay',
+                    'https://placehold.co/120x90/4A5568/ffffff?text=Performance+Graph'
+                ],
+                description: "This is a current, in-progress project focusing on the development of a highly scalable, data-oriented component system within Unreal Engine 5. We are using an NDA-safe description that focuses purely on the **technical systems** developed, rather than unannounced game content. The primary goal is achieving stable 60 FPS performance on lower-spec hardware.",
                 contributions: [
                     "Object pooling system to eliminate allocation spikes and achieving frame stability during object spawning",
                     "Integration of the full menu system, enabling the delivery of core features such as pause, settings, save/load.",
                 ],
                 video_embed_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=1' // Rickroll (Good placeholder!)
-            },    
+            },    
             {
                 id: 'P2023',
                 title: 'Aliens: Fireteam Elite',
                 thumbnail_url: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1549970/header.jpg',
-                detail_image_url: 'https://placehold.co/800x450/4A5568/ffffff?text=Galaxy+System+View',
-                description: "A C++ and Unreal Engine system utilizing noise functions and recursive algorithms to generate vast, explorable space sectors at runtime. Focused heavily on optimizing Level-of-Detail (LOD) and memory footprint for seamless console and PC performance. This system dramatically reduced content creation time for designers.",
+                detail_image_urls: [
+                    'https://placehold.co/800x450/4A5568/ffffff?text=Aliens+Main+Shot',
+                    'https://placehold.co/120x90/4A5568/ffffff?text=Horde+Mode',
+                    'https://placehold.co/120x90/4A5568/ffffff?text=Level+Design'
+                ],
+                description: "Contributed across the build pipeline and test infrastructure for this cooperative third-person survival shooter. Focused on improving stability, reducing QA cycles, and increasing engineering visibility into build health and test coverage.",
                 contributions: [
                     "Integrated AI bot-driven simulated playthroughs into test infrastructure, reducing manual QA time.",
                     "Integrating and backporting narrative plugins across engine versions, improving cross-functional workflows and reducing design iteration time",
@@ -180,10 +202,13 @@
             {
                 id: 'P2018',
                 title: 'Zwift',
-                //thumbnail_url: 'https://theapertopartnership.com/wp-content/uploads/2022/02/aperto-news_zwift.jpg',
                 thumbnail_url: 'https://techblog.jeppson.org/wp-content/uploads/2020/11/ZWIFT_20201117_143849.png',
-                detail_image_url: 'https://placehold.co/800x450/718096/ffffff?text=Behavior+Tree+Flow',
-                description: "Developed sophisticated Behavior Tree systems for enemy NPCs, focusing on multi-target acquisition, rapid threat evaluation, and synchronized group tactics. Engineered the systems for reliability in a low-latency, competitive multiplayer environment.",
+                detail_image_urls: [
+                    'https://placehold.co/800x450/718096/ffffff?text=Zwift+Environment',
+                    'https://placehold.co/120x90/718096/ffffff?text=UI+Elements',
+                    'https://placehold.co/120x90/718096/ffffff?text=Rider+Customization',
+                ],
+                description: "A massively multiplayer online cycling and running game built on a custom C++ engine. My focus was on core networking logic and NPC AI for the virtual race elements, ensuring low-latency communication for real-time player interaction.",
                 contributions: [
                     "Authored core synchronization logic for networked enemy state across dedicated servers.",
                     "Integrated a custom pathfinding solution optimized for dynamic cover generation.",
@@ -195,7 +220,9 @@
                 id: 'P2010',
                 title: 'TRON: Evolution PSP',
                 thumbnail_url: 'https://store-images.s-microsoft.com/image/apps.15461.70604570059522486.8094b4bd-deb8-41a0-ba08-5f0789477e3d.9acca8b0-99ba-4c41-bf2a-74df659f4cb4?q=90&w=480&h=270',
-                detail_image_url: 'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen',
+                detail_image_urls: [
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
+                ],
                 description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
                 contributions: [
                     "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
@@ -208,7 +235,9 @@
                 id: 'P2009',
                 title: 'Fat Princess: Fistful of Cake',
                 thumbnail_url: 'thumb_fp.jpg',
-                detail_image_url: 'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen',
+                detail_image_urls: [
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
+                ],
                 description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
                 contributions: [
                     "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
@@ -221,7 +250,9 @@
                 id: 'P2007',
                 title: 'flOw PSP',
                 thumbnail_url: 'https://upload.wikimedia.org/wikipedia/en/c/cf/Flow_logo.jpg',
-                detail_image_url: 'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen',
+                detail_image_urls: [
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
+                ],
                 description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
                 contributions: [
                     "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
@@ -238,12 +269,14 @@
         const detailImage = document.getElementById('detail-image');
         const detailDescription = document.getElementById('detail-description');
         const videoContainer = document.getElementById('video-container');
-        const contributionsList = document.getElementById('contributions-list');    
+        const contributionsList = document.getElementById('contributions-list'); 
         
-        // NEW REFERENCES for scrolling logic
         const scrollWrapper = document.getElementById('scroll-wrapper');
         const scrollLeftBtn = document.getElementById('scroll-left-btn');
         const scrollRightBtn = document.getElementById('scroll-right-btn');
+        
+        // NEW REFERENCE for image gallery
+        const imageGallery = document.getElementById('image-gallery'); 
 
         let activeProject = null;
         
@@ -254,21 +287,55 @@
          * @param {object} project - The project data object.
          */
         function renderProjectDetails(project) {
-            // Update Text and Image
+            
+            // --- Update Text and Main Image ---
             detailTitle.textContent = project.title;
-            detailImage.src = project.detail_image_url;
+            
+            // Set main image to the first URL in the array
+            detailImage.src = project.detail_image_urls[0];
             detailImage.alt = `${project.title} Main Visual`;
             detailDescription.textContent = project.description;
 
-            // Update Contributions List (NEW LOGIC)
+            // --- Update Contributions List ---
             contributionsList.innerHTML = ''; // Clear previous list
             project.contributions.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item;
                 contributionsList.appendChild(li);
             });
+            
+            // --- Update Image Gallery ---
+            imageGallery.innerHTML = ''; // Clear previous gallery
+            project.detail_image_urls.forEach((url, index) => {
+                const imgWrapper = document.createElement('div');
+                imgWrapper.className = `w-24 h-16 flex-shrink-0 rounded-md border-2 object-cover overflow-hidden transition duration-150 ease-in-out cursor-pointer hover:border-[#58a6ff] ${index === 0 ? 'border-[#58a6ff] scale-[1.05]' : 'border-transparent'}`;
+                imgWrapper.id = `gallery-thumb-${project.id}-${index}`; // Unique ID
 
-            // Update Video Embed
+                const img = document.createElement('img');
+                img.src = url;
+                // Add onerror to handle bad placeholder URLs from the mock data
+                img.onerror = function() { this.src = 'https://placehold.co/120x90/1f242d/c9d1d9?text=Image'; };
+                img.alt = `${project.title} Screenshot ${index + 1}`;
+                img.className = 'w-full h-full object-cover';
+                
+                imgWrapper.addEventListener('click', () => {
+                    // Switch main image
+                    detailImage.src = url;
+                    
+                    // Update active border style in gallery
+                    document.querySelectorAll('#image-gallery > div').forEach(thumb => {
+                        thumb.classList.remove('border-[#58a6ff]', 'scale-[1.05]');
+                        thumb.classList.add('border-transparent');
+                    });
+                    imgWrapper.classList.add('border-[#58a6ff]', 'scale-[1.05]');
+                    imgWrapper.classList.remove('border-transparent');
+                });
+
+                imgWrapper.appendChild(img);
+                imageGallery.appendChild(imgWrapper);
+            });
+
+            // --- Update Video Embed ---
             const videoIframe = `
                 <iframe
                     class="w-full h-full"
@@ -281,7 +348,7 @@
             `;
             videoContainer.innerHTML = videoIframe;
 
-            // Update Active State (Styling)
+            // --- Update Active State (Styling for Thumbnail List) ---
             if (activeProject) {
                 document.getElementById(`thumb-${activeProject}`).classList.remove('active');
             }
@@ -295,7 +362,6 @@
 
         /** Checks if the scroll boundaries are hit and updates button visibility. */
         function checkScrollPosition() {
-            // Wait for next frame to ensure scroll position is updated
             window.requestAnimationFrame(() => {
                 const { scrollLeft, scrollWidth, clientWidth } = scrollWrapper;
                 const tolerance = 5; // Allow for slight floating point errors
@@ -322,7 +388,6 @@
                 left: direction * SCROLL_DISTANCE,
                 behavior: 'smooth'
             });
-            // checkScrollPosition is called by the 'scroll' event triggered by scrollBy
         }
         
         // A. Drag Scrolling (Mouse Down/Move/Up)
@@ -333,13 +398,10 @@
         scrollWrapper.addEventListener('mousedown', (e) => {
             isDown = true;
             scrollWrapper.classList.add('cursor-grabbing');
-            // Record initial mouse position and current scroll position
             startX = e.pageX - scrollWrapper.offsetLeft;
             scrollLeftPos = scrollWrapper.scrollLeft;
-            
-            // Prevent text selection during drag
             scrollWrapper.style.cursor = 'grabbing';
-            scrollWrapper.style.userSelect = 'none';    
+            scrollWrapper.style.userSelect = 'none';    
         });
 
         scrollWrapper.addEventListener('mouseleave', () => {
@@ -360,27 +422,23 @@
 
         scrollWrapper.addEventListener('mousemove', (e) => {
             if (!isDown) return;
-            e.preventDefault(); // Stop default behavior like selecting text
+            e.preventDefault(); 
             const x = e.pageX - scrollWrapper.offsetLeft;
-            const walk = (x - startX) * 1.5; // Drag speed factor (1.5x)
+            const walk = (x - startX) * 1.5; 
             scrollWrapper.scrollLeft = scrollLeftPos - walk;
         });
         
         // B. Mouse Wheel Scrolling
         scrollWrapper.addEventListener('wheel', (e) => {
-            // Prevent default vertical scrolling on the wrapper
-            e.preventDefault();    
-            // Translate vertical scroll (deltaY) into horizontal scroll (scrollLeft)
+            e.preventDefault();    
             scrollWrapper.scrollLeft += e.deltaY;
-            // checkScrollPosition is called by the 'scroll' event triggered by changing scrollLeft
         });
         
         // C. Button & Scroll Listeners
         scrollLeftBtn.addEventListener('click', () => smoothScroll(-1));
         scrollRightBtn.addEventListener('click', () => smoothScroll(1));
         
-        // Ensure buttons update visibility whenever the panel scrolls
-        scrollWrapper.addEventListener('scroll', checkScrollPosition);    
+        scrollWrapper.addEventListener('scroll', checkScrollPosition);    
 
         // --- 5. INITIALIZATION ---
 
@@ -391,19 +449,15 @@
             projects.forEach(project => {
                 const button = document.createElement('button');
                 button.id = `thumb-${project.id}`;
-                // FIXED CLIPPING: Removed 'overflow-hidden'. Removed 'group' and 'relative' as tooltip is removed.
                 button.className = 'project-thumbnail w-[150px] h-[90px] flex-shrink-0 rounded-lg border-2 border-transparent hover:border-[#58a6ff]/50 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#58a6ff]';
                 
                 const img = document.createElement('img');
                 img.src = project.thumbnail_url;
                 img.alt = `${project.title} Thumbnail`;
-                // Added rounded-lg to the image to ensure the corners inside the button are styled
                 img.className = 'w-full h-full object-cover rounded-lg'; 
                 
                 button.appendChild(img);
                 
-                // REMOVED TOOLTIP CODE
-
                 button.addEventListener('click', () => {
                     renderProjectDetails(project);
                 });
@@ -421,7 +475,7 @@
         function initializeApp() {
             initializeThumbnails();
             // Check initial scroll position to hide the left button
-            checkScrollPosition();    
+            checkScrollPosition();    
         }
 
         // Run initialization when the window loads
