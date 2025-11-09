@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional GameDev Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark background similar to GitHub */
+            color: #c9d1d9; /* Light text */
+        }
+        /* Custom styles for the horizontal scrolling panel */
+        .scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background-color: #30363d;
+            border-radius: 4px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background-color: #161b22;
+        }
+        .scroll-container {
+            /* Fallback for Firefox */
+            scrollbar-color: #30363d #161b22;
+            /* Default cursor for drag interaction */
+            cursor: grab;
+            user-select: none; /* Prevents text selection while dragging */
+        }
+        .scroll-container.cursor-grabbing {
+            cursor: grabbing;
+        }
+        
+        .project-thumbnail {
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            cursor: pointer;
+            /* Allow the scaled active border/shadow to show outside the original bounds */
+        }
+        .project-thumbnail.active {
+            border-color: #58a6ff;
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Ensure scroll buttons are on top of other elements */
+        .scroll-btn {
+            height: calc(100% - 70px); /* Height minus the header space */
+            top: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: 50% 100%;
+        }
+
+        /* FIX: Ensure tooltips are not clipped vertically by the scrolling container (This rule is no longer strictly needed for the tooltip, but kept for general safety of absolute children) */
+        #scroll-wrapper {
+            overflow-y: visible !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div class="container mx-auto p-4 sm:p-8">
+        <!-- Header Section -->
+        <header class="text-center mb-8 sm:mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-[#58a6ff] mb-2">My Game Development Portfolio</h1>
+            <p class="text-xl text-gray-400">Gameplay Engineering & Scalable Systems</p>
+        </header>
+
+        <!-- Project Thumbnails (Side-Scrolling Panel with Controls) -->
+        <div class="mb-10 p-4 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700 relative group">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-200">Featured Projects</h2>
+            
+            <!-- Scrollable content wrapper (DRAGGABLE AREA) -->
+            <!-- Changed pb-2 to py-4 to ensure space for the enlarged active thumbnail highlight -->
+            <div id="scroll-wrapper" class="overflow-x-auto scroll-container py-4">
+                <div id="thumbnail-list" class="flex flex-nowrap space-x-6">
+                    <!-- Thumbnails will be injected here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Scroll Buttons (ABSOLUTELY POSITIONED) -->
+            <button id="scroll-left-btn" class="scroll-btn absolute left-0 top-[108px] -translate-y-1/2 px-4 rounded-r-lg opacity-0 invisible group-hover:opacity-100 transition-opacity duration-300 z-10 bg-gradient-to-r from-[#161b22] via-[#161b22]/90 to-transparent hover:bg-[#161b22]/90 text-[#58a6ff] focus:outline-none" aria-label="Scroll left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button id="scroll-right-btn" class="scroll-btn absolute right-0 top-[108px] -translate-y-1/2 px-4 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 bg-gradient-to-l from-[#161b22] via-[#161b22]/90 to-transparent hover:bg-[#161b22]/90 text-[#58a6ff] focus:outline-none" aria-label="Scroll right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+
+        <!-- Project Detail Area (Updates on Click) -->
+        <main id="project-details" class="bg-[#161b22] p-6 sm:p-10 rounded-xl shadow-2xl border border-gray-700 min-h-[600px]">
+            <h2 class="3xl sm:text-4xl font-bold text-gray-50 mb-4" id="detail-title">Select a Project Above</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Media Column (Image and Video) -->
+                <div>
+                    <!-- Main Image Area -->
+                    <div class="mb-6">
+                        <!-- Initial placeholder text remains for an unselected project state -->
+                        <img id="detail-image" class="w-full h-auto rounded-lg shadow-xl border border-gray-600 object-cover aspect-video"
+                                 src="https://placehold.co/800x450/1f242d/c9d1d9?text=Select+a+Project" alt="Project Main Visual">
+                    </div>
+
+                    <!-- Embedded Video Area -->
+                    <div class="aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-xl" id="video-container">
+                        <!-- Video iframe will be injected here -->
+                        <div class="flex items-center justify-center h-full text-gray-500">
+                            <span id="video-placeholder">Video content will appear here.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details Column (Description) -->
+                <div class="pt-4">
+                    <h3 class="text-2xl font-semibold mb-3 text-[#58a6ff]">Project Overview</h3>
+                    <p id="detail-description" class="text-gray-400 leading-relaxed">
+                        Click on any thumbnail in the scrolling panel above to load the corresponding project details, images, and embedded videos into this section.
+                        This single-file HTML structure gives you complete control over presentation and interactivity.
+                    </p>
+
+                    <!-- NEW Key Contributions Section -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-200">Key Contributions</h3>
+                        <ul id="contributions-list" class="list-disc pl-5 space-y-2 text-gray-400">
+                            <!-- List items will be injected here by JavaScript -->
+                        </ul>
+                    </div>
+                    <!-- END NEW Key Contributions Section -->
+                    
+                    <!-- Example of a simple hover-over tooltip -->
+                    <div class="mt-8">
+                        <span class="bg-gray-700 text-sm font-medium py-1 px-3 rounded-full inline-block relative group">
+                            C++ & Unreal Engine
+                            <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 p-2 text-xs text-white bg-gray-800 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity w-max shadow-lg">
+                                Core tech stack used across all projects.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- 1. MOCK DATA DEFINITION (NOW USING RELATIVE PATHS) ---
+        const projects = [
+            {
+                id: 'P2025',
+                title: 'Stuck on Set',
+                thumbnail_url: 'sos.jpg',
+                detail_image_url: 'https://placehold.co/800x450/4A5568/ffffff?text=Galaxy+System+View',
+                description: "A C++ and Unreal Engine system utilizing noise functions and recursive algorithms to generate vast, explorable space sectors at runtime. Focused heavily on optimizing Level-of-Detail (LOD) and memory footprint for seamless console and PC performance. This system dramatically reduced content creation time for designers.",
+                contributions: [
+                    "Engineered a novel quad-tree spatial partitioning system for planet culling.",
+                    "Developed custom memory pooling solutions in C++ to minimize GC overhead.",
+                    "Collaborated with Technical Artists to implement a shader-based planetary ring system.",
+                    "Established CI/CD pipeline tests for procedural generation stability."
+                ],
+                video_embed_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=1' // Rickroll (Good placeholder!)
+            },    
+            {
+                id: 'P2023',
+                title: 'Aliens: Fireteam Elite',
+                thumbnail_url: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1549970/header.jpg',
+                detail_image_url: 'https://placehold.co/800x450/4A5568/ffffff?text=Galaxy+System+View',
+                description: "A C++ and Unreal Engine system utilizing noise functions and recursive algorithms to generate vast, explorable space sectors at runtime. Focused heavily on optimizing Level-of-Detail (LOD) and memory footprint for seamless console and PC performance. This system dramatically reduced content creation time for designers.",
+                contributions: [
+                    "Engineered a novel quad-tree spatial partitioning system for planet culling.",
+                    "Developed custom memory pooling solutions in C++ to minimize GC overhead.",
+                    "Collaborated with Technical Artists to implement a shader-based planetary ring system.",
+                    "Established CI/CD pipeline tests for procedural generation stability."
+                ],
+                video_embed_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=1' // Rickroll (Good placeholder!)
+            },
+            {
+                id: 'P2018',
+                title: 'Zwift',
+                //thumbnail_url: 'https://theapertopartnership.com/wp-content/uploads/2022/02/aperto-news_zwift.jpg',
+                thumbnail_url: 'https://techblog.jeppson.org/wp-content/uploads/2020/11/ZWIFT_20201117_143849.png',
+                detail_image_url: 'https://placehold.co/800x450/718096/ffffff?text=Behavior+Tree+Flow',
+                description: "Developed sophisticated Behavior Tree systems for enemy NPCs, focusing on multi-target acquisition, rapid threat evaluation, and synchronized group tactics. Engineered the systems for reliability in a low-latency, competitive multiplayer environment.",
+                contributions: [
+                    "Authored core synchronization logic for networked enemy state across dedicated servers.",
+                    "Integrated a custom pathfinding solution optimized for dynamic cover generation.",
+                    "Led cross-disciplinary meetings between design and engineering on combat tuning.",
+                ],
+                video_embed_url: 'https://www.youtube.com/embed/9bZkp7q19f0?autoplay=0&controls=1&mute=1' // Generic Game Trailer
+            },
+            {
+                id: 'P2010',
+                title: 'TRON: Evolution PSP',
+                thumbnail_url: 'https://store-images.s-microsoft.com/image/apps.15461.70604570059522486.8094b4bd-deb8-41a0-ba08-5f0789477e3d.9acca8b0-99ba-4c41-bf2a-74df659f4cb4?q=90&w=480&h=270',
+                detail_image_url: 'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen',
+                description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
+                contributions: [
+                    "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
+                    "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
+                    "Reduced UI load times by 40% through aggressive caching and optimization.",
+                ],
+                video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
+            },
+            {
+                id: 'P2009',
+                title: 'Fat Princess: Fistful of Cake',
+                thumbnail_url: 'https://images.launchbox-app.com/3ad6fd8e-bcf4-4062-aa07-c71fa9c24915.png',
+                detail_image_url: 'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen',
+                description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
+                contributions: [
+                    "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
+                    "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
+                    "Reduced UI load times by 40% through aggressive caching and optimization.",
+                ],
+                video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
+            },
+            {
+                id: 'P2007',
+                title: 'flOw PSP',
+                thumbnail_url: 'https://upload.wikimedia.org/wikipedia/en/c/cf/Flow_logo.jpg',
+                detail_image_url: 'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen',
+                description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
+                contributions: [
+                    "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
+                    "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
+                    "Reduced UI load times by 40% through aggressive caching and optimization.",
+                ],
+                video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
+            },
+        ];
+
+        // --- 2. DOM ELEMENT REFERENCES ---
+        const thumbnailList = document.getElementById('thumbnail-list');
+        const detailTitle = document.getElementById('detail-title');
+        const detailImage = document.getElementById('detail-image');
+        const detailDescription = document.getElementById('detail-description');
+        const videoContainer = document.getElementById('video-container');
+        const contributionsList = document.getElementById('contributions-list');    
+        
+        // NEW REFERENCES for scrolling logic
+        const scrollWrapper = document.getElementById('scroll-wrapper');
+        const scrollLeftBtn = document.getElementById('scroll-left-btn');
+        const scrollRightBtn = document.getElementById('scroll-right-btn');
+
+        let activeProject = null;
+        
+        // --- 3. CORE RENDERING FUNCTION ---
+
+        /**
+         * Updates the main detail panel with content from the selected project.
+         * @param {object} project - The project data object.
+         */
+        function renderProjectDetails(project) {
+            // Update Text and Image
+            detailTitle.textContent = project.title;
+            detailImage.src = project.detail_image_url;
+            detailImage.alt = `${project.title} Main Visual`;
+            detailDescription.textContent = project.description;
+
+            // Update Contributions List (NEW LOGIC)
+            contributionsList.innerHTML = ''; // Clear previous list
+            project.contributions.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                contributionsList.appendChild(li);
+            });
+
+            // Update Video Embed
+            const videoIframe = `
+                <iframe
+                    class="w-full h-full"
+                    src="${project.video_embed_url}"
+                    title="YouTube video player for ${project.title}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            `;
+            videoContainer.innerHTML = videoIframe;
+
+            // Update Active State (Styling)
+            if (activeProject) {
+                document.getElementById(`thumb-${activeProject}`).classList.remove('active');
+            }
+            document.getElementById(`thumb-${project.id}`).classList.add('active');
+            activeProject = project.id;
+        }
+        
+        // --- 4. INTERACTIVE SCROLLING LOGIC ---
+        
+        const SCROLL_DISTANCE = 300; // Pixels to scroll per click
+
+        /** Checks if the scroll boundaries are hit and updates button visibility. */
+        function checkScrollPosition() {
+            // Wait for next frame to ensure scroll position is updated
+            window.requestAnimationFrame(() => {
+                const { scrollLeft, scrollWidth, clientWidth } = scrollWrapper;
+                const tolerance = 5; // Allow for slight floating point errors
+
+                // Show/Hide Left Button
+                if (scrollLeft <= tolerance) {
+                    scrollLeftBtn.classList.add('invisible');
+                } else {
+                    scrollLeftBtn.classList.remove('invisible');
+                }
+
+                // Show/Hide Right Button
+                if (scrollWidth - clientWidth - scrollLeft <= tolerance) {
+                    scrollRightBtn.classList.add('invisible');
+                } else {
+                    scrollRightBtn.classList.remove('invisible');
+                }
+            });
+        }
+        
+        /** Scrolls the wrapper smoothly based on direction (-1 for left, 1 for right). */
+        function smoothScroll(direction) {
+            scrollWrapper.scrollBy({
+                left: direction * SCROLL_DISTANCE,
+                behavior: 'smooth'
+            });
+            // checkScrollPosition is called by the 'scroll' event triggered by scrollBy
+        }
+        
+        // A. Drag Scrolling (Mouse Down/Move/Up)
+        let isDown = false;
+        let startX;
+        let scrollLeftPos;
+
+        scrollWrapper.addEventListener('mousedown', (e) => {
+            isDown = true;
+            scrollWrapper.classList.add('cursor-grabbing');
+            // Record initial mouse position and current scroll position
+            startX = e.pageX - scrollWrapper.offsetLeft;
+            scrollLeftPos = scrollWrapper.scrollLeft;
+            
+            // Prevent text selection during drag
+            scrollWrapper.style.cursor = 'grabbing';
+            scrollWrapper.style.userSelect = 'none';    
+        });
+
+        scrollWrapper.addEventListener('mouseleave', () => {
+            if (isDown) { // Only reset if drag was active
+                 isDown = false;
+                 scrollWrapper.classList.remove('cursor-grabbing');
+                 scrollWrapper.style.cursor = 'grab';
+                 scrollWrapper.style.userSelect = 'auto';
+            }
+        });
+
+        scrollWrapper.addEventListener('mouseup', () => {
+            isDown = false;
+            scrollWrapper.classList.remove('cursor-grabbing');
+            scrollWrapper.style.cursor = 'grab';
+            scrollWrapper.style.userSelect = 'auto';
+        });
+
+        scrollWrapper.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault(); // Stop default behavior like selecting text
+            const x = e.pageX - scrollWrapper.offsetLeft;
+            const walk = (x - startX) * 1.5; // Drag speed factor (1.5x)
+            scrollWrapper.scrollLeft = scrollLeftPos - walk;
+        });
+        
+        // B. Mouse Wheel Scrolling
+        scrollWrapper.addEventListener('wheel', (e) => {
+            // Prevent default vertical scrolling on the wrapper
+            e.preventDefault();    
+            // Translate vertical scroll (deltaY) into horizontal scroll (scrollLeft)
+            scrollWrapper.scrollLeft += e.deltaY;
+            // checkScrollPosition is called by the 'scroll' event triggered by changing scrollLeft
+        });
+        
+        // C. Button & Scroll Listeners
+        scrollLeftBtn.addEventListener('click', () => smoothScroll(-1));
+        scrollRightBtn.addEventListener('click', () => smoothScroll(1));
+        
+        // Ensure buttons update visibility whenever the panel scrolls
+        scrollWrapper.addEventListener('scroll', checkScrollPosition);    
+
+        // --- 5. INITIALIZATION ---
+
+        /**
+         * Generates the initial thumbnail list and sets up click listeners.
+         */
+        function initializeThumbnails() {
+            projects.forEach(project => {
+                const button = document.createElement('button');
+                button.id = `thumb-${project.id}`;
+                // FIXED CLIPPING: Removed 'overflow-hidden'. Removed 'group' and 'relative' as tooltip is removed.
+                button.className = 'project-thumbnail w-[150px] h-[90px] flex-shrink-0 rounded-lg border-2 border-transparent hover:border-[#58a6ff]/50 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#58a6ff]';
+                
+                const img = document.createElement('img');
+                img.src = project.thumbnail_url;
+                img.alt = `${project.title} Thumbnail`;
+                // Added rounded-lg to the image to ensure the corners inside the button are styled
+                img.className = 'w-full h-full object-cover rounded-lg'; 
+                
+                button.appendChild(img);
+                
+                // REMOVED TOOLTIP CODE
+
+                button.addEventListener('click', () => {
+                    renderProjectDetails(project);
+                });
+
+                thumbnailList.appendChild(button);
+            });
+
+            // Load the first project by default on page load
+            if (projects.length > 0) {
+                renderProjectDetails(projects[0]);
+            }
+        }
+        
+        /** Combines thumbnail initialization with scroll initialization */
+        function initializeApp() {
+            initializeThumbnails();
+            // Check initial scroll position to hide the left button
+            checkScrollPosition();    
+        }
+
+        // Run initialization when the window loads
+        window.onload = initializeApp;
+    </script>
+</body>
+</html>
