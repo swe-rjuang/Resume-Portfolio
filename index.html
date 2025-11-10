@@ -78,8 +78,9 @@
     <div class="container mx-auto p-4 sm:p-8">
         <!-- Header Section -->
         <header class="text-center mb-8 sm:mb-12">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-[#58a6ff] mb-2">RICK'S GAMEDEV PORTFOLIO</h1>
-            <p class="text-xl text-gray-400">Gameplay Engineering & Scalable Systems</p>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-[#58a6ff] mb-2">Rick Juang | Game Engineering Portfolio</h1>
+            <!--p class="text-xl text-gray-400">Turning complex systems into simple solutions</p-->
+            <p class="text-xl text-gray-400">Focus: Gameplay Systems, AI Behaviors, UI and Tools Development</p>
         </header>
 
         <!-- Project Thumbnails (Side-Scrolling Panel with Controls) -->
@@ -119,7 +120,7 @@
                     </div>
 
                     <!-- NEW: Image Gallery/Carousel -->
-                    <div id="image-gallery" class="flex space-x-3 overflow-x-auto pb-4">
+                    <div id="image-gallery" class="flex space-x-3 overflow-x-auto pt-1 px-1 pb-4">
                         <!-- Image thumbnails injected here -->
                     </div>
                     <!-- END NEW: Image Gallery/Carousel -->
@@ -169,13 +170,13 @@
         // Define styles for consistent tag colors
         const TAG_STYLES = {
             'C++': 'bg-blue-600 text-white',
-            'Unreal Engine 5': 'bg-green-600 text-white',
+            'Unreal Engine 5': 'bg-black text-white',
             'Blueprint': 'bg-blue-600 text-white',
             'Networking': 'bg-yellow-500 text-gray-900',
             'AI': 'bg-red-600 text-white',
             'Python': 'bg-blue-400 text-white',
             'C#': 'bg-purple-600 text-white',
-            'Unity 3D': 'bg-indigo-600 text-white',
+            'Unity 3D': 'bg-white text-gray-500',
             'UI': 'bg-purple-600 text-white',
             'UI/UX': 'bg-purple-600 text-white',
             'Noesis GUI': 'bg-blue-500 text-white',
@@ -183,11 +184,12 @@
             'Build Pipeline': 'bg-teal-600 text-white',
             'Git': 'bg-orange-600 text-white',
             'Perforce': 'bg-indigo-600 text-white',
-            'Custom Engine': 'bg-gray-700 text-white',
+            'Proprietary Engine': 'bg-gray-700 text-white',
             'Grafana': 'bg-orange-600 text-white',
             'TeamCity': 'bg-green-400 text-white',
             'Xbox': 'bg-green-800 text-white',
             'PlayStation': 'bg-blue-900 text-white',
+            'PSP': 'bg-gray-900 text-gray-300',
             'Multiplayer': 'bg-green-600 text-white',
             'Android': 'bg-green-500 text-white',
             'iOS': 'bg-white text-black',
@@ -239,6 +241,7 @@
                     'proj/scr_zg_group.jpg',
                     'proj/scr_zg_homescreen.jpg',
                     'proj/scr_zg_bink.jpg',
+                    'proj/scr_zg_boostmode_menu.png',
                     'proj/scr_zg_boostmode.jpg',
                 ],
                 description: "A massively multiplayer online cycling and running game built on a custom C++ engine. My role evolved from focusing on high-performance C++ systems and complex refactoring to leading the Features Engineering team in charge of major product delivery. The primary challenge involved architecting scalable features for a large, monolithic codebase while simultaneously driving down technical debt and ensuring on-time delivery of consumer-facing releases. My work required deep expertise in low-latency systems, cross-platform architecture, and effective team management to deliver robust, scalable solutions for a rapidly growing user base.",
@@ -250,7 +253,7 @@
                     "Developed the core mechanics for a physics-based online game game mode, managing real-time physics simulation and ensuring competitive integrity across concurrent users. (<a href='https://zwiftinsider.com/race-lost-boost-mode/' target='_blank' class='text-blue-500 hover:text-blue-400 underline'>Boost Mode</a> Race)",
                     "Designed a scalable video playback system utilizing CDN and feature flags for asset management, decoupling content from build releases and cutting install size."
                 ],
-                tech_stack: ['C++', 'Custom Engine', 'Multiplayer', 'UI', 'Noesis GUI', 'XAML', 'Git', 'Perforce', 'Android', 'iOS'],
+                tech_stack: ['C++', 'Proprietary Engine', 'Multiplayer', 'UI', 'Noesis GUI', 'XAML', 'Git', 'Perforce', 'Android', 'iOS'],
                 video_embed_url: 'https://www.youtube.com/embed/OupP9d3-Ugk?autoplay=0&controls=1&mute=0'
             },
             {
@@ -266,6 +269,7 @@
                     "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
                     "Reduced UI load times by 40% through aggressive caching and optimization.",
                 ],
+                tech_stack: ['C++', 'Proprietary Engine', 'PSP'],
                 tech_stack: ['C++', 'UI/UX', 'Unreal Engine 5'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
@@ -282,7 +286,7 @@
                     "Rewrote the collision detection system for improved performance.",
                     "Managed cross-platform compatibility between PS3 and PSP versions.",
                 ],
-                tech_stack: ['C++', 'Custom Engine', 'C#', 'UI/UX'],
+                tech_stack: ['C++', 'Proprietary Engine', 'C#', 'UI/UX'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
             {
@@ -298,7 +302,7 @@
                     "Implemented the core growth and consumption mechanics.",
                     "Managed submission process for handheld console release.",
                 ],
-                tech_stack: ['C++', 'Custom Engine', 'Shaders'],
+                tech_stack: ['C++', 'Proprietary Engine', 'Shaders'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
             {
@@ -314,7 +318,7 @@
                     "Implemented a fluid simulation using compute shaders.",
                     "Developed a robust test framework for custom game physics engines.",
                 ],
-                tech_stack: ['Python', 'C++', 'Shaders', 'AI'],
+                tech_stack: ['C++', 'Unreal Engine 5', 'Blueprint', 'Networking', 'AI', 'Python', 'C#', 'Unity 3D', 'UI', 'UI/UX', 'Noesis GUI', 'XAML', 'Build Pipeline', 'Git', 'Perforce', 'Proprietary Engine', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation', 'PSP', 'Multiplayer', 'Android', 'iOS'],
                 //video_embed_url: 'https://www.youtube.com/watch?v=htr7MsBXlH4?autoplay=0&controls=1&mute=1' // Another Generic Clip
                 video_embed_url: 'https://www.youtube.com/embed/htr7MsBXlH4'
             },
