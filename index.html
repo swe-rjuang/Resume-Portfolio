@@ -178,13 +178,19 @@
             'Unity 3D': 'bg-indigo-600 text-white',
             'UI': 'bg-purple-600 text-white',
             'UI/UX': 'bg-purple-600 text-white',
+            'Noesis GUI': 'bg-blue-500 text-white',
+            'XAML': 'bg-blue-400 text-white',
             'Build Pipeline': 'bg-teal-600 text-white',
-            'Shaders': 'bg-orange-600 text-white',
-            'Custom Engine': 'bg-gray-800 text-white',
+            'Git': 'bg-orange-600 text-white',
+            'Perforce': 'bg-indigo-600 text-white',
+            'Custom Engine': 'bg-gray-700 text-white',
             'Grafana': 'bg-orange-600 text-white',
             'TeamCity': 'bg-green-400 text-white',
             'Xbox': 'bg-green-800 text-white',
             'PlayStation': 'bg-blue-900 text-white',
+            'Multiplayer': 'bg-green-600 text-white',
+            'Android': 'bg-green-500 text-white',
+            'iOS': 'bg-white text-black',
         };
 
         const projects = [
@@ -222,8 +228,8 @@
                     "Integrating and backporting narrative plugins across engine versions, improving cross-functional workflows and reducing design iteration time",
                     "Built analytics for nightly builds and test runs, boosting build health visibility 4× and reducing Mean Time To Detection (MTTD) by 85%",
                 ],
-                tech_stack: ['C++', 'Unreal Engine 5', 'Plugin', 'Build Pipeline', 'C#', 'Python', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation'],
-                video_embed_url: 'https://www.youtube.com/embed/B63_ljZ91Mc'
+                tech_stack: ['C++', 'Unreal Engine 5', 'Plugin', 'Build Pipeline', 'Perforce', 'C#', 'Python', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation'],
+                video_embed_url: 'https://www.youtube.com/embed/B63_ljZ91Mc?autoplay=0&controls=1&mute=0'
             },
             {
                 id: 'P2018-ZG',
@@ -235,18 +241,21 @@
                     'proj/scr_zg_bink.jpg',
                     'proj/scr_zg_boostmode.jpg',
                 ],
-                description: "A massively multiplayer online cycling and running game built on a custom C++ engine. My focus was on core networking logic and NPC AI for the virtual race elements, ensuring low-latency communication for real-time player interaction.",
+                description: "A massively multiplayer online cycling and running game built on a custom C++ engine. My role evolved from focusing on high-performance C++ systems and complex refactoring to leading the Features Engineering team in charge of major product delivery. The primary challenge involved architecting scalable features for a large, monolithic codebase while simultaneously driving down technical debt and ensuring on-time delivery of consumer-facing releases. My work required deep expertise in low-latency systems, cross-platform architecture, and effective team management to deliver robust, scalable solutions for a rapidly growing user base.",
                 contributions: [
-                    "Authored core synchronization logic for networked enemy state across dedicated servers.",
-                    "Integrated a custom pathfinding solution optimized for dynamic cover generation.",
-                    "Led cross-disciplinary meetings between design and engineering on combat tuning.",
+                    "Led the Features Engineering team (6-8 reports), driving on-time delivery of major feature releases.",
+                    "Architected activity recommendation, improving event discovery and reducing player friction.",
+                    "Modularized monolithic end-game flow into scalable components, cutting technical debt and enabling major product version update. (<a href='https://zwiftinsider.com/return-to-home/' target='_blank' class='text-blue-500 hover:text-blue-400 underline'>Return to Home</a> Feature).",
+                    "Consolidated and refactored legacy multiplayer and UI (HUD) codebases, reducing maintenance effort and improving development efficiency.",
+                    "Developed the core mechanics for a physics-based online game game mode, managing real-time physics simulation and ensuring competitive integrity across concurrent users. (<a href='https://zwiftinsider.com/race-lost-boost-mode/' target='_blank' class='text-blue-500 hover:text-blue-400 underline'>Boost Mode</a> Race)",
+                    "Designed a scalable video playback system utilizing CDN and feature flags for asset management, decoupling content from build releases and cutting install size."
                 ],
-                tech_stack: ['C++', 'Custom Engine', 'Networking', 'AI', 'Shaders'],
-                video_embed_url: 'https://www.youtube.com/embed/OupP9d3-Ugk?autoplay=0&controls=1&mute=1'
+                tech_stack: ['C++', 'Custom Engine', 'Multiplayer', 'UI', 'Noesis GUI', 'XAML', 'Git', 'Perforce', 'Android', 'iOS'],
+                video_embed_url: 'https://www.youtube.com/embed/OupP9d3-Ugk?autoplay=0&controls=1&mute=0'
             },
             {
                 id: 'P2010-TRON',
-                title: 'TRON: Evolution PSP',
+                title: 'TRON: Evolution (PSP)',
                 thumbnail_url: 'thumb/thumb_tron_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
@@ -278,7 +287,7 @@
             },
             {
                 id: 'P2007-FLOW',
-                title: 'flOw PSP',
+                title: 'flOw (PSP)',
                 thumbnail_url: 'thumb/thumb_flow_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
@@ -348,7 +357,7 @@
             contributionsList.innerHTML = ''; // Clear previous list
             project.contributions.forEach(item => {
                 const li = document.createElement('li');
-                li.textContent = item;
+                li.innerHTML = item;
                 contributionsList.appendChild(li);
             });
             
