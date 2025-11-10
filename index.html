@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin" />
     <title>Professional GameDev Portfolio</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -187,7 +188,7 @@
         };
 
         const projects = [
-            {
+            /*{
                 id: 'P2025-SOS',
                 title: 'Stuck on Set',
                 thumbnail_url: 'thumb_sos.jpg',
@@ -204,11 +205,11 @@
                 ],
                 tech_stack: ['C++', 'Unreal Engine 5', 'Blueprint', 'UI'],
                 video_embed_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=1' // Rickroll (Good placeholder!)
-            },
+            },*/
             {
                 id: 'P2023-AFE',
                 title: 'Aliens: Fireteam Elite',
-                thumbnail_url: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1549970/header.jpg',
+                thumbnail_url: 'thumb_afe_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/4A5568/ffffff?text=Aliens+Main+Shot',
                     'https://placehold.co/120x90/4A5568/ffffff?text=Horde+Mode',
@@ -221,12 +222,12 @@
                     "Built analytics for nightly builds and test runs, boosting build health visibility 4× and reducing Mean Time To Detection (MTTD) by 85%",
                 ],
                 tech_stack: ['C++', 'Unreal Engine 5', 'Plugin', 'Build Pipeline', 'C#', 'Python', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation'],
-                video_embed_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&mute=1' // Rickroll (Good placeholder!)
+                video_embed_url: 'https://www.youtube.com/embed/3X7ERpgkx5c?si=vSWFfGmoUjJ75QH9'
             },
             {
                 id: 'P2018-ZG',
                 title: 'Zwift',
-                thumbnail_url: 'https://techblog.jeppson.org/wp-content/uploads/2020/11/ZWIFT_20201117_143849.png',
+                thumbnail_url: 'thumb_zg_orange_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/718096/ffffff?text=Zwift+Environment',
                     'https://placehold.co/120x90/718096/ffffff?text=UI+Elements',
@@ -244,7 +245,7 @@
             {
                 id: 'P2010-TRON',
                 title: 'TRON: Evolution PSP',
-                thumbnail_url: 'https://store-images.s-microsoft.com/image/apps.15461.70604570059522486.8094b4bd-deb8-41a0-ba08-5f0789477e3d.9acca8b0-99ba-4c41-bf2a-74df659f4cb4?q=90&w=480&h=270',
+                thumbnail_url: 'thumb_tron_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
                 ],
@@ -260,7 +261,7 @@
             {
                 id: 'P2009-FP',
                 title: 'Fat Princess: Fistful of Cake',
-                thumbnail_url: 'thumb_fp.jpg',
+                thumbnail_url: 'thumb_fp_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
                 ],
@@ -276,7 +277,7 @@
             {
                 id: 'P2007-FLOW',
                 title: 'flOw PSP',
-                thumbnail_url: 'https://upload.wikimedia.org/wikipedia/en/c/cf/Flow_logo.jpg',
+                thumbnail_url: 'thumb_flow_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
                 ],
@@ -292,7 +293,7 @@
             {
                 id: 'P2025-X',
                 title: 'Academic & Experimental Works',
-                thumbnail_url: 'thumb_gt.jpg',
+                thumbnail_url: 'thumb_gatech_180.jpg',
                 detail_image_urls: [
                     'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
                 ],
@@ -303,7 +304,8 @@
                     "Developed a robust test framework for custom game physics engines.",
                 ],
                 tech_stack: ['Python', 'C++', 'Shaders', 'AI'],
-                video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
+                //video_embed_url: 'https://www.youtube.com/watch?v=htr7MsBXlH4?autoplay=0&controls=1&mute=1' // Another Generic Clip
+                video_embed_url: 'https://www.youtube.com/embed/htr7MsBXlH4'
             },
         ];
 
@@ -387,7 +389,8 @@
                     title="YouTube video player for ${project.title}"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    >
                 </iframe>
             `;
             videoContainer.innerHTML = videoIframe;
@@ -505,7 +508,7 @@
             projects.forEach(project => {
                 const button = document.createElement('button');
                 button.id = `thumb-${project.id}`;
-                button.className = 'project-thumbnail w-[150px] h-[90px] flex-shrink-0 rounded-lg border-2 border-transparent hover:border-[#58a6ff]/50 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#58a6ff]';
+                button.className = 'project-thumbnail w-[160px] h-[90px] flex-shrink-0 rounded-lg border-2 border-transparent hover:border-[#58a6ff]/50 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#58a6ff]';
                 
                 const img = document.createElement('img');
                 img.src = project.thumbnail_url;
