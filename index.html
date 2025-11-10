@@ -193,6 +193,7 @@
             'Multiplayer': 'bg-green-600 text-white',
             'Android': 'bg-green-500 text-white',
             'iOS': 'bg-white text-black',
+            'XML': 'bg-white text-blue-500',
         };
 
         const projects = [
@@ -261,32 +262,37 @@
                 title: 'TRON: Evolution (PSP)',
                 thumbnail_url: 'thumb/thumb_tron_180.jpg',
                 detail_image_urls: [
-                    'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
+                    'proj/scr_tron_lightcycle.jpg',
+                    'proj/scr_tron_disc.jpg',
+                    'proj/scr_tron_tank.jpg',
+                    'proj/scr_tron_parkour.jpg',
                 ],
-                description: "Created a lightweight, data-driven UI layer built atop Slate/UMG for rapid prototyping of complex inventory, crafting, and HUD screens. This framework standardized data flow, significantly reducing designer iteration time from days to hours.",
+                description: "Developed critical AI and core gameplay systems for this third-person action-adventure title set in the TRON universe. The project required integrating complex character behaviors within a highly stylized digital environment, ensuring AI opponents and companions delivered a challenging and immersive experience that was faithful to the film’s high-speed action and combat.",
                 contributions: [
-                    "Designed and implemented the core Model-View-Presenter (MVP) architecture.",
-                    "Created tooling for designers to visually edit UI layouts directly via JSON schema.",
-                    "Reduced UI load times by 40% through aggressive caching and optimization.",
+                    "<b>Light Cycle</b>: player vehicle control and AI opponent behaviors for high-speed racing and battle segments.",
+                    "<b>Disc Arena</b>: Pathfinding, AI behaviors and decision making logic for fast-paced combat scenarios, including cover, seeking, and flanking maneuvers.",
+                    "<b>Tank Battle</b>: Utility AI framework for allied and enemy tank units.",
+                    "NPC AI integration and behavior scripting for the core parkour and traversal system."
                 ],
                 tech_stack: ['C++', 'Proprietary Engine', 'PSP'],
-                tech_stack: ['C++', 'UI/UX', 'Unreal Engine 5'],
-                video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
+                video_embed_url: 'https://www.youtube.com/embed/TfaagdJudL0?autoplay=0&controls=1&mute=1'
             },
             {
                 id: 'P2009-FP',
                 title: 'Fat Princess: Fistful of Cake',
                 thumbnail_url: 'thumb/thumb_fp_180.jpg',
                 detail_image_urls: [
-                    'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
+                    'https://placehold.co/800x450/4299E1/ffffff?text=In-Game+Screenshot'
                 ],
-                description: "Ported the original Fat Princess game to the PSP, optimizing core engine logic for memory and CPU constraints of the handheld console. This required significant C++ refactoring and low-level graphics optimization.",
+                description: "Contributed to the PSP development of this critically acclaimed class-based multiplayer Action RTS title. The game required robust multi-goal AI systems, environmental interaction, and sophisticated pathfinding for the unique Fat Princess mechanic, which significantly impacted team strategy and level dynamics.",
                 contributions: [
-                    "Achieved a stable framerate on PSP hardware through extensive memory management.",
-                    "Rewrote the collision detection system for improved performance.",
-                    "Managed cross-platform compatibility between PS3 and PSP versions.",
+                    "Pathfinding and Navigation: Implemented and optimized pathfinding algorithms for allied and enemy units, ensuring stable navigation across dynamic level geometry on low-performance handheld hardware.",
+                    "Utility AI System: Developed a utility-based AI framework for allied and enemy units, enabling adaptive and priority-driven behavior based on real-time game state and player actions.",
+                    "Data Asset Conversion Tools: Created custom tools for converting and optimizing PS3 data assets for deployment on the PSP platform, ensuring cross-platform parity.",
+                    "Game Systems Integration: Developed code to support core gameplay mechanics, including resource gathering, unit spawning, and the unique Princess movement logic tied to consumed food level.",
+                    "Multiplayer Consistency: Ensured reliable synchronization of key game state elements, specifically related to unit actions and AI objectives, crucial for a fast-paced, competitive multiplayer environment.",
                 ],
-                tech_stack: ['C++', 'Proprietary Engine', 'C#', 'UI/UX'],
+                tech_stack: ['C++', 'Proprietary Engine', 'PSP', 'XML'],
                 video_embed_url: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&controls=1&mute=1' // Another Generic Clip
             },
             {
@@ -294,7 +300,7 @@
                 title: 'flOw (PSP)',
                 thumbnail_url: 'thumb/thumb_flow_180.jpg',
                 detail_image_urls: [
-                    'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
+                    'https://placehold.co/800x450/4299E1/ffffff?text=In-Game+Screenshot'
                 ],
                 description: "A simple, abstract game that required custom physics implementation and dynamic UI scaling. This project focused heavily on efficient rendering pipelines for stylized 2D elements.",
                 contributions: [
@@ -310,7 +316,7 @@
                 title: 'Academic & Experimental Works',
                 thumbnail_url: 'thumb/thumb_gatech_180.jpg',
                 detail_image_urls: [
-                    'https://placehold.co/800x450/4299E1/ffffff?text=Inventory+Screen'
+                    'https://placehold.co/800x450/4299E1/ffffff?text=In-Game+Screenshot'
                 ],
                 description: "A collection of personal projects, academic research, and tech demos focusing on advanced topics like Machine Learning for AI pathfinding and complex volumetric rendering experiments.",
                 contributions: [
@@ -318,7 +324,7 @@
                     "Implemented a fluid simulation using compute shaders.",
                     "Developed a robust test framework for custom game physics engines.",
                 ],
-                tech_stack: ['C++', 'Unreal Engine 5', 'Blueprint', 'Networking', 'AI', 'Python', 'C#', 'Unity 3D', 'UI', 'UI/UX', 'Noesis GUI', 'XAML', 'Build Pipeline', 'Git', 'Perforce', 'Proprietary Engine', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation', 'PSP', 'Multiplayer', 'Android', 'iOS'],
+                tech_stack: ['C++', 'Unreal Engine 5', 'Blueprint', 'Networking', 'AI', 'Python', 'C#', 'Unity 3D', 'UI', 'UI/UX', 'XML', 'Noesis GUI', 'XAML', 'Build Pipeline', 'Git', 'Perforce', 'Proprietary Engine', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation', 'PSP', 'Multiplayer', 'Android', 'iOS'],
                 //video_embed_url: 'https://www.youtube.com/watch?v=htr7MsBXlH4?autoplay=0&controls=1&mute=1' // Another Generic Clip
                 video_embed_url: 'https://www.youtube.com/embed/htr7MsBXlH4'
             },
@@ -354,7 +360,7 @@
             
             // Set main image to the first URL in the array
             detailImage.src = project.detail_image_urls[0];
-            detailImage.alt = `${project.title} Main Visual`;
+            detailImage.alt = `${project.title} Screenshot`;
             detailDescription.textContent = project.description;
 
             // --- Update Contributions List ---
