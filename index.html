@@ -337,18 +337,42 @@
                 video_embed_url: 'https://www.youtube.com/embed/R0UN4wFSNh8?autoplay=0&controls=1&mute=0'
             },
             {
-                id: 'P2025-X',
+                id: 'P2025-GT',
                 title: 'Academic & Experimental Works',
                 thumbnail_url: 'thumb/thumb_gatech_180.jpg',
                 detail_image_urls: [
-                    'https://placehold.co/800x450/4299E1/ffffff?text=Project+Spawner',
-                    'https://placehold.co/800x450/4299E1/ffffff?text=Sprite+and+2D+Particle+System',
-                    'https://placehold.co/800x450/4299E1/ffffff?text=Ballistic+Projectile+Simulation',
                     'https://placehold.co/800x450/4299E1/ffffff?text=Prison+Dodge+Ball+AI+Agents',
                     'https://placehold.co/800x450/4299E1/ffffff?text=Fuzzy+Logic+Controller',
                     'https://placehold.co/800x450/4299E1/ffffff?text=Dynamic+Path+Planning',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Ballistic+Projectile+Simulation',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Inverse+Kinematics+Solver',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Rigidbody+Collision',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Constraint+System',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Physics+Integrator',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Spline',
                 ],
-                description: "A collection of personal projects, academic research, and tech demos focusing on advanced topics.",
+                description: "A collection of class projects. (WIP)",
+                contributions: [
+                    "TBD",
+                ],
+                tech_stack: ['Unity', 'C#', 'Java', 'Python', 'CUDA'],
+                video_embed_url: 'https://www.youtube.com/embed/OCGrrtmS75U?si=XYsZABeTxl8T5aPq?autoplay=0&controls=1&mute=0'
+            },
+            {
+                id: 'P2025-X',
+                title: 'Personal Projects',
+                //thumbnail_url: 'thumb/thumb_spawner_180.jpg',
+                thumbnail_url: 'https://placehold.co/800x450/303330/ffcc00?text=Personal+Projects',
+                detail_image_urls: [
+                    'proj/scr_spawner_512.jpg',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Project+Spawner',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Project+Rainmaker',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=WebGL+Test',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Helium+Engine',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Entity+Component+System',
+                    'https://placehold.co/800x450/4299E1/ffffff?text=Sprite+and+2D+Particle+System',
+                ],
+                description: "A collection of personal projects. (WIP)",
                 contributions: [
                     "TBD",
                 ],
@@ -561,7 +585,7 @@
                 const img = document.createElement('img');
                 img.src = project.thumbnail_url;
                 // Add an error fallback for placeholder images
-                img.onerror = function() { this.src = 'https://placehold.co/150x90/1f242d/c9d1d9?text=Project'; };
+                img.onerror = function() { this.src = 'https://placehold.co/150x90/1f242d/c9d1d9?text='+project.title; };
                 img.alt = `${project.title} Thumbnail`;
                 img.className = 'w-full h-full object-cover rounded-lg'; 
                 
