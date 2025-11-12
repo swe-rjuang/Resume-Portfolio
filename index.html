@@ -246,7 +246,7 @@
                 contributions: [
                     "Integrated AI bot-driven simulated playthroughs into test infrastructure, reducing manual QA time.",
                     "Integrating and backporting narrative plugins across engine versions, improving cross-functional workflows and reducing design iteration time",
-                    "Built analytics for nightly builds and test runs, boosting build health visibility 4� and reducing Mean Time To Detection (MTTD) by 85%",
+                    "Built analytics for nightly builds and test runs, boosting build health visibility and reducing Mean Time To Detection (MTTD) by 85%",
                 ],
                 tech_stack: ['C++', 'Unreal Engine 4', 'Plugin', 'Build Pipeline', 'Perforce', 'C#', 'Python', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation'],
                 video_embed_url: 'https://www.youtube.com/embed/GHGL2kBbPCQ?autoplay=0&controls=1&mute=0'
@@ -533,7 +533,7 @@
             startX = e.pageX - scrollWrapper.offsetLeft;
             scrollLeftPos = scrollWrapper.scrollLeft;
             scrollWrapper.style.cursor = 'grabbing';
-            scrollWrapper.style.userSelect = 'none'; � �
+            scrollWrapper.style.userSelect = 'none';
         });
 
         scrollWrapper.addEventListener('mouseleave', () => {
@@ -562,7 +562,7 @@
         
         // B. Mouse Wheel Scrolling
         scrollWrapper.addEventListener('wheel', (e) => {
-            e.preventDefault(); � �
+            e.preventDefault();
             scrollWrapper.scrollLeft += e.deltaY;
         });
         
@@ -570,7 +570,7 @@
         scrollLeftBtn.addEventListener('click', () => smoothScroll(-1));
         scrollRightBtn.addEventListener('click', () => smoothScroll(1));
         
-        scrollWrapper.addEventListener('scroll', checkScrollPosition); � �
+        scrollWrapper.addEventListener('scroll', checkScrollPosition);
 
         // --- 5. INITIALIZATION ---
 
@@ -609,7 +609,7 @@
         function initializeApp() {
             initializeThumbnails();
             // Check initial scroll position to hide the left button
-            checkScrollPosition(); � �
+            checkScrollPosition();
         }
 
         // Run initialization when the window loads
