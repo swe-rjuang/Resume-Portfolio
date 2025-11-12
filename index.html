@@ -246,7 +246,7 @@
                 contributions: [
                     "Integrated AI bot-driven simulated playthroughs into test infrastructure, reducing manual QA time.",
                     "Integrating and backporting narrative plugins across engine versions, improving cross-functional workflows and reducing design iteration time",
-                    "Built analytics for nightly builds and test runs, boosting build health visibility 4× and reducing Mean Time To Detection (MTTD) by 85%",
+                    "Built analytics for nightly builds and test runs, boosting build health visibility 4� and reducing Mean Time To Detection (MTTD) by 85%",
                 ],
                 tech_stack: ['C++', 'Unreal Engine 4', 'Plugin', 'Build Pipeline', 'Perforce', 'C#', 'Python', 'Grafana', 'TeamCity', 'Xbox', 'PlayStation'],
                 video_embed_url: 'https://www.youtube.com/embed/GHGL2kBbPCQ?autoplay=0&controls=1&mute=0'
@@ -284,7 +284,7 @@
                     'proj/scr_tron_tank.jpg',
                     'proj/scr_tron_parkour.jpg',
                 ],
-                description: "Developed critical AI and core gameplay systems for this third-person action-adventure title set in the TRON universe. The project required integrating complex character behaviors within a highly stylized digital environment, ensuring AI opponents and companions delivered a challenging and immersive experience that was faithful to the film’s high-speed action and combat.",
+                description: "Developed critical AI and core gameplay systems for this third-person action-adventure title set in the TRON universe. The project required integrating complex character behaviors within a highly stylized digital environment, ensuring AI opponents and companions delivered a challenging and immersive experience that was faithful to the film�s high-speed action and combat.",
                 contributions: [
                     "<b>Light Cycle</b>: player vehicle control and AI opponent behaviors for high-speed racing and battle segments.",
                     "<b>Disc Arena</b>: Pathfinding, AI behaviors and decision making logic for fast-paced combat scenarios, including cover, seeking, and flanking maneuvers.",
@@ -334,7 +334,7 @@
                     "Engineered the menu-less save/load system, allowing seamless gameplay resumption.",
                 ],
                 tech_stack: ['C++', 'Proprietary Engine', 'PSP'],
-                video_embed_url: 'https://www.youtube.com/embed/videoseries?list=PLU4OB251Yy6Nb5qzNlD6JoIHGj65DNQNm&autoplay=1&mute=1'
+                video_embed_url: 'https://www.youtube.com/embed/htr7MsBXlH4?autoplay=0&controls=1&mute=0'
             },
             {
                 id: 'P2025-GT',
@@ -356,7 +356,8 @@
                     "TBD",
                 ],
                 tech_stack: ['Unity', 'C#', 'Java', 'Python', 'CUDA'],
-                video_embed_url: 'https://www.youtube.com/embed/OCGrrtmS75U?si=XYsZABeTxl8T5aPq?autoplay=0&controls=1&mute=0'
+                //video_embed_url: 'https://www.youtube.com/embed/OCGrrtmS75U?si=XYsZABeTxl8T5aPq?autoplay=0&controls=1&mute=0'
+                video_embed_url: 'https://www.youtube.com/embed/videoseries?list=PLU4OB251Yy6Nb5qzNlD6JoIHGj65DNQNm&mute=1'
             },
             {
                 id: 'P2025-X',
@@ -532,7 +533,7 @@
             startX = e.pageX - scrollWrapper.offsetLeft;
             scrollLeftPos = scrollWrapper.scrollLeft;
             scrollWrapper.style.cursor = 'grabbing';
-            scrollWrapper.style.userSelect = 'none';    
+            scrollWrapper.style.userSelect = 'none'; � �
         });
 
         scrollWrapper.addEventListener('mouseleave', () => {
@@ -561,7 +562,7 @@
         
         // B. Mouse Wheel Scrolling
         scrollWrapper.addEventListener('wheel', (e) => {
-            e.preventDefault();    
+            e.preventDefault(); � �
             scrollWrapper.scrollLeft += e.deltaY;
         });
         
@@ -569,7 +570,7 @@
         scrollLeftBtn.addEventListener('click', () => smoothScroll(-1));
         scrollRightBtn.addEventListener('click', () => smoothScroll(1));
         
-        scrollWrapper.addEventListener('scroll', checkScrollPosition);    
+        scrollWrapper.addEventListener('scroll', checkScrollPosition); � �
 
         // --- 5. INITIALIZATION ---
 
@@ -608,7 +609,7 @@
         function initializeApp() {
             initializeThumbnails();
             // Check initial scroll position to hide the left button
-            checkScrollPosition();    
+            checkScrollPosition(); � �
         }
 
         // Run initialization when the window loads
