@@ -556,14 +556,14 @@
             if (!isDown) return;
             e.preventDefault(); 
             const x = e.pageX - scrollWrapper.offsetLeft;
-            const walk = (x - startX) * 1.5; 
+            const walk = (x - startX) * 1.15;  // Adjust scroll speed as needed
             scrollWrapper.scrollLeft = scrollLeftPos - walk;
         });
         
         // B. Mouse Wheel Scrolling
         scrollWrapper.addEventListener('wheel', (e) => {
             e.preventDefault();
-            scrollWrapper.scrollLeft += e.deltaY;
+            scrollWrapper.scrollLeft += (e.deltaY * 0.85);  // Adjust scroll speed as needed
         });
         
         // C. Button & Scroll Listeners
